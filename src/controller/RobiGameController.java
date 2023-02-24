@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import javax.swing.JOptionPane;
 
@@ -39,7 +40,11 @@ public class RobiGameController extends PApplet {
 		// lese Highscores (Aber nur einmal am Anfang)
 		HighScoreReader r = new HighScoreReader();
 		scores = r.readHighScores("HighScore.txt");
-
+		scores.sort(new Comparator<HighScore>() {
+			public int compare(HighScore arg0, HighScore arg1) {
+				return arg0.getScore() - arg1.getScore();
+			}
+		}); 
 	}
 
 	/**
@@ -51,8 +56,7 @@ public class RobiGameController extends PApplet {
 		robis = new ArrayList<>();
 		for (int i = 0; i < 3; i++)
 			robis.add(new Robi(this, (int) random(width), (int) random(height), 0xFF0000FF));
-		for(Robi r : robis)
-		{
+		for (Robi r : robis) {
 			r.setSpeed(1);
 		}
 
