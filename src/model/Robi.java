@@ -7,7 +7,14 @@ public class Robi {
 	int x;
 	int y;
 	int myColor;
-	int speed = 5;
+	int speed = 7;
+	/**
+	 * @param speed the speed to set
+	 */
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
 	private int score = 0;
 	PApplet window;
 
